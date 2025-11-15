@@ -1,0 +1,385 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* ================ header ================ */
+header {
+  background-color: #2c8ac4;
+  color: #ffffff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* ================ index page ================ */
+
+main {
+  display: flex;
+  gap: 1rem;
+
+}
+
+aside {
+  width: 20%;
+  height: auto;
+  background-color: #ffffff;
+  color: #5b5a5a;
+  padding: 15px 20px;
+  border-right: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+aside h2 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+aside form {
+  display: flex;
+  flex-direction: column;
+}
+
+
+aside form label {
+  margin-bottom: 3px;
+}
+
+aside form select {
+  background-color: #cdd2d4;
+}
+
+aside form input,
+aside form select {
+  margin-bottom: 15px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+aside form button {
+  padding: 10px;
+  background-color: #2c8ac4;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+aside form button:hover {
+  background-color: #1b5f8a;
+}
+
+section#products {
+  width: 78%;
+  justify-content: center;
+  padding: 20px 10px;
+}
+
+section#products .products-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+section#products .product-item {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 0 0 0 1px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #fafafa;
+}
+
+section#products .product-item img {
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+section#products .product-item h3 {
+  font-size: 1.1rem;
+  color: #1671c6;
+}
+
+section#products .product-item-category {
+  width:fit-content;
+  border-radius: 10px;
+  background-color: #000000;
+  font-size: 1.2rem;
+  color: #ffffff;
+  padding: 5px;
+}
+
+section#products .product-item-desc {
+  color: #333333;
+  font-size: 0.9rem;
+}
+
+section#products .product-item-price {
+  color: #488bc9;
+  font-size: 0.9rem;
+}
+
+section#products .products-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+section#products .products-pagination button {
+  padding: 8px 12px;
+  background-color: #2c8ac4;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+section#products .products-pagination button:hover {
+  background-color: #1b5f8a;
+}
+
+/* =============== admin page =============== */
+
+.admin-main {
+  padding: 20px;
+  width: 80%;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fafafa;
+}
+
+.admin-main h2 {
+  color: #2c8ac4;
+}
+
+.admin-main form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.admin-main form label {
+  margin-bottom: 3px;
+}
+
+.admin-main form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 30rem;
+}
+
+.admin-main form button {
+  padding: 10px 15px;
+  background-color: #2c8ac4;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-main form button:hover {
+  background-color: #1b5f8a;
+}
+
+.admin-main table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-main table th,
+.admin-main table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.admin-main table th {
+  background-color: #3589bd;
+  color: #ffffff;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.admin-main table td {
+  color: #333333;
+}
+
+.admin-main table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.admin-main table .admin-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.admin-main table .admin-actions button {
+  padding: 5px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+}
+
+.admin-main table .admin-actions .view-btn {
+  background-color: #4caf50;
+}
+
+.admin-main table .admin-actions .view-btn:hover {
+  background-color: #388e3c;
+}
+
+.admin-main table .admin-actions .edit-btn {
+  background-color: #ff9800;
+}
+
+.admin-main table .admin-actions .edit-btn:hover {
+  background-color: #f57c00;
+}
+
+.admin-main table .admin-actions .delete-btn {
+  background-color: #f44336;
+}
+
+.admin-main table .admin-actions .delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+.admin-main .admin-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.admin-main .admin-pagination button {
+  padding: 8px 12px;
+  background-color: #2c8ac4;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-main .admin-pagination button:hover {
+  background-color: #1b5f8a;
+}
+
+/* ===================== create product page ===================== */
+
+.create-product-main {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 3rem;
+  margin: 1rem auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fafafa;
+}
+
+.create-product-main h2 {
+  color: #136ea7;
+}
+
+.create-product-main form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #777575;
+}
+
+.create-product-main form label {
+  font-size: .8rem;
+}
+
+.create-product-main form input,
+.create-product-main form select {
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.create-product-main form select {
+  background-color: #e0e4e6;
+  outline: none;
+  margin-bottom: 2.5rem;
+}
+
+.create-product-main form select option {
+  padding: 5px;
+  outline: none;
+}
+
+
+.create-product-main form input::placeholder {
+  color: #929191;
+}
+
+.create-product-main form button {
+  width: fit-content;
+  align-self: flex-end;
+  padding: 10px 20px;
+  background-color: #24a555;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.create-product-main form button:hover {
+  background-color: #1b5f8a;
+}

@@ -17,19 +17,23 @@
       </ul>
     </nav>
   </header>
-  <main>
-    <div class="product-item-container">
-      <button onclick="window.history.back();">>> Back to Products</button>
-      <div class="product-item-detail">
-        <img src="product1.jpg" alt="Product 1">
+  <main class="product-detail-main">
+    <div class="product-item-container" id="product-item-container">
+      <a href="./index.html">&lt;&lt; Back to Products</a>
+      <div class="product-item-detail" id="product-item-detail">
+        <img alt="Loading..."
+          id="product-image">
         <div class="product-info">
-          <h2>Product 1</h2>
-          <p>Category: Electronics</p>
-          <p>Price: $99.99</p>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum, aliquid quibusdam reprehenderit maiores quam officiis optio voluptas tenetur asperiores sint exercitationem nesciunt hic obcaecati incidunt labore voluptate ut quasi quidem.</p>
+          <h2 id="product-title">Loading...</h2>
+          <p id="product-category">Category: ...</p>
+          <p id="product-price"></p>
+          <p id="product-description">...</p>
         </div>
       </div>
     </div>
   </main>
+
+  <script type="module" src="./js/services/api.js"></script>
+  <script type="module" src="./js/pages/detail.js"></script>
 </body>
 </html>

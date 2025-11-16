@@ -1,4 +1,4 @@
-[Live Demo](https://your-live-demo-url.com)
+[Live Demo](https://mohamednaeemm.github.io/E-Commerce-Admin-Dashboard/)
 
 # Vanilla JS E-Commerce & Admin Dashboard
 

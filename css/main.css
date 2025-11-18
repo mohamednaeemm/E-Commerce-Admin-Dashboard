@@ -456,8 +456,6 @@ section#products .products-pagination button:hover {
 }
 
 @media (max-width: 768px) {
-
-  /* 1. Stack Header */
   header {
     flex-direction: column;
     gap: 10px;
@@ -473,7 +471,6 @@ section#products .products-pagination button:hover {
     margin: 0 5px;
   }
 
-  /* 2. Stack Index Page (Sidebar on top of Products) */
   main {
     flex-direction: column;
     padding: 10px;
@@ -492,33 +489,29 @@ section#products .products-pagination button:hover {
   }
 
   section#products .products-container {
-    grid-template-columns: 1fr; /* 1 Column on mobile */
+    grid-template-columns: 1fr; 
   }
 
-  /* 3. Admin Page Adjustments */
   .admin-main {
     width: 95%;
     padding: 10px;
   }
 
   .admin-main form input {
-    width: 100%; /* Fix the 30rem width issue */
+    width: 100%; 
   }
   
-  /* Make table scrollable on mobile so it doesn't break layout */
   .admin-main table {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
   }
 
-  /* 4. Create Product Adjustments */
   .create-product-main {
     width: 90%;
     padding: 1rem;
   }
 
-  /* 5. Detail Page Adjustments (Stack Image & Text) */
   .product-item-container {
     width: 100%;
   }
@@ -529,7 +522,7 @@ section#products .products-pagination button:hover {
   }
 
   .product-item-detail img {
-    width: 100%; /* Full width image */
+    width: 100%; 
     margin-bottom: 1rem;
   }
 

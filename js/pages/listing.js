@@ -25,9 +25,9 @@ async function loadProducts(page) {
   productsContainer.innerHTML = "";
 
   if (products.length === 0) {
-    productsContainer.innerHTML = "<h3>No products found for this filter.</h3>";
+    productsContainer.innerHTML = "<h3>No products found.</h3>";
     nextPage.disabled = true;
-    prevPage.disabled = true;
+    prevPage.disabled = false;
     return;
   }
 
@@ -38,7 +38,7 @@ async function loadProducts(page) {
     const productElement = document.createElement("div");
     productElement.classList.add("product-item");
     productElement.innerHTML = `
-      <img src="assets/images/default-product.png" alt="${product.title}">
+      <img src="${`https://ui-avatars.com/api/?name=${encodeURIComponent(product.title)}`}" alt="${product.title}">
       <h3>${product.title}</h3>
       <p class="product-item-category">${product.category.name}</p>
       <p class="product-item-price">$${product.price}</p>

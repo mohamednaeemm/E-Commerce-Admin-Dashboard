@@ -415,14 +415,17 @@ section#products .products-pagination button:hover {
 }
 
 .product-item-detail {
+  width: 100%;
   display: flex;
   gap: 2rem;
   padding: 2rem;
+  justify-content: start;
+  align-items: start;
 }
 
 .product-item-detail img {
-  width: 30%;
-  height: auto;
+  max-width: 50%;
+  height: 60vh;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -517,12 +520,14 @@ section#products .products-pagination button:hover {
   }
 
   .product-item-detail {
+    width: 100%;
     flex-direction: column;
     padding: 1rem;
   }
 
   .product-item-detail img {
-    width: 100%; 
+    max-width: 100%; 
+    object-fit: cover;
     margin-bottom: 1rem;
   }
 

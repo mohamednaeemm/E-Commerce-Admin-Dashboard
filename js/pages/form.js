@@ -75,7 +75,7 @@ form.addEventListener("submit", async (e) => {
     description: descriptionInput.value,
     price: parseFloat(priceInput.value),
     categoryId: parseInt(categoryInput.value),
-    images: ["https://www.freeiconspng.com/images/no-image-icon"] 
+    images: [`https://ui-avatars.com/api/?name=${encodeURIComponent(titleInput.value)}`] 
   };
 
   try {

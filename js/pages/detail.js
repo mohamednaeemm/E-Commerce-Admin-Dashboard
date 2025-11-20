@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   titleEl.textContent = product.title;
-  imageEl.src = `${`https://ui-avatars.com/api/?name=${encodeURIComponent(product.title)}`}`;
+  imageEl.src = product.images && product.images.length > 1 ? product.images[0] : `https://ui-avatars.com/api/?name=${encodeURIComponent(product.title)}`;
   imageEl.alt = product.title;
   categoryEl.textContent = `Category: ${product.category.name}`;
   priceEl.textContent = `$${product.price}`;

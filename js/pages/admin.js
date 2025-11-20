@@ -20,10 +20,12 @@ async function loadAdminProducts(page) {
 
   tableBody.innerHTML = "";
 
-  if (products.length === 0 && page > 1) {
-    currentPage--;
-    alert("No more products found.");
-    loadAdminProducts(currentPage);
+  if (products.length === 0) {
+    const row = document.createElement("tr");
+    row.innerHTML = `<td colspan="5">No products found.</td>`;
+    tableBody.appendChild(row);
+    prevPage.disabled = true;
+    nextPage.disabled = true;
     return;
   }
   

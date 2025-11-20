@@ -37,10 +37,12 @@ async function loadProducts(page) {
   products.forEach(product => {
     const productElement = document.createElement("div");
     productElement.classList.add("product-item");
+    const imgSrc = product.images && product.images.length > 1 ? product.images[0] : `https://ui-avatars.com/api/?name=${encodeURIComponent(product.title)}`;
+
     productElement.innerHTML = `
-      <img src="${`https://ui-avatars.com/api/?name=${encodeURIComponent(product.title)}`}" alt="${product.title}">
+      <img src="${imgSrc}" loading="lazy" alt="${product.title}">
       <h3>${product.title}</h3>
-      <p class="product-item-category">${product.category.name}</p>
+      <p class="product-item-category">${product.category?.name || ''}</p>
       <p class="product-item-price">$${product.price}</p>
     `;
     productElement.addEventListener("click", () => {
@@ -78,18 +80,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const minPriceValue = document.getElementById("min-price").value;
     const maxPriceValue = document.getElementById("max-price").value;
 
-    const minPrice = parseFloat(minPriceValue);
-    const maxPrice = parseFloat(maxPriceValue);
+    const minPrice = minPriceValue ? parseFloat(minPriceValue) : 0;
+    const maxPrice = maxPriceValue ? parseFloat(maxPriceValue) : Infinity;
 
-    if (minPrice > 0 && maxPrice > 0 && minPrice > maxPrice) {
+    if (minPrice > maxPrice) {
       priceErrorEl.textContent = "Max price must be greater than min price.";
       return;
     }
 
     currentFilters = {
       categoryId: categoryValue,
-      minPrice: minPriceValue,
-      maxPrice: maxPriceValue
+      minPrice: minPriceValue || 1,
+      maxPrice: maxPriceValue || 10000
     };
 
     currentPage = 1;

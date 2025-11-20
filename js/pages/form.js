@@ -11,7 +11,6 @@ const titleInput = document.getElementById("product-title");
 const descriptionInput = document.getElementById("product-description");
 const priceInput = document.getElementById("product-price");
 const categoryInput = document.getElementById("product-category");
-const imageField = document.getElementById("image-field");
 const submitBtn = document.getElementById("submit-btn");
 const errorMsg = document.getElementById("error-message");
 
@@ -35,8 +34,6 @@ async function setupEditMode(id) {
   formTitle.textContent = "Update Product";
   submitBtn.textContent = "Update";
   document.title = "Update Product";
-
-  imageField.style.display = "none";
 
   try {
     const product = await getProductById(id);

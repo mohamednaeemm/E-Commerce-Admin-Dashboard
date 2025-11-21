@@ -11,7 +11,7 @@ let currentFilters = {};
 
 async function loadCategories() {
   const categories = await getAllCategories();
-  categories.forEach(category => {
+  categories.forEach((category) => {
     const option = document.createElement("option");
     option.value = category.id;
     option.textContent = category.name;
@@ -31,20 +31,43 @@ async function loadProducts(page) {
     return;
   }
 
-  prevPage.disabled = (currentPage === 1);
-  nextPage.disabled = (products.length < 9);
+  prevPage.disabled = currentPage === 1;
+  nextPage.disabled = products.length < 9;
 
-  products.forEach(product => {
+  products.forEach((product) => {
     const productElement = document.createElement("div");
     productElement.classList.add("product-item");
-    const imgSrc = product.images && product.images.length > 1 ? product.images[0] : `https://ui-avatars.com/api/?name=${encodeURIComponent(product.title)}`;
 
-    productElement.innerHTML = `
-      <img src="${imgSrc}" loading="lazy" alt="${product.title}">
-      <h3>${product.title}</h3>
-      <p class="product-item-category">${product.category?.name || ''}</p>
-      <p class="product-item-price">$${product.price}</p>
-    `;
+    const img = document.createElement("img");
+    img.loading = "lazy";
+    img.alt = product.title;
+    const fallbackSrc = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+      product.title
+    )}`;
+    img.src =
+      product.images && product.images.length > 0
+        ? product.images[0]
+        : fallbackSrc;
+    img.onerror = () => {
+      img.src = fallbackSrc;
+    };
+
+    const h3 = document.createElement("h3");
+    h3.textContent = product.title;
+
+    const categoryP = document.createElement("p");
+    categoryP.className = "product-item-category";
+    categoryP.textContent = product.category?.name || "";
+
+    const priceP = document.createElement("p");
+    priceP.className = "product-item-price";
+    priceP.textContent = `$${product.price}`;
+
+    productElement.appendChild(img);
+    productElement.appendChild(h3);
+    productElement.appendChild(categoryP);
+    productElement.appendChild(priceP);
+
     productElement.addEventListener("click", () => {
       window.location.href = `./product.html?id=${product.id}`;
     });
@@ -91,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     currentFilters = {
       categoryId: categoryValue,
       minPrice: minPriceValue || 1,
-      maxPrice: maxPriceValue || 10000
+      maxPrice: maxPriceValue || 10000,
     };
 
     currentPage = 1;

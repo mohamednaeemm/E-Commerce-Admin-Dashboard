@@ -1,10 +1,9 @@
-import { getProductById } from '../services/api.js';
+import { getProductById } from "../services/api.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const productId = urlParams.get('id');
+  const productId = urlParams.get("id");
 
   const container = document.getElementById("product-item-detail");
   const titleEl = document.getElementById("product-title");
@@ -14,19 +13,28 @@ document.addEventListener("DOMContentLoaded", async () => {
   const descriptionEl = document.getElementById("product-description");
 
   if (!productId) {
-    container.innerHTML = "<h1 class=\"error\">Product ID not found.</h1>";
+    container.innerHTML = '<h1 class="error">Product ID not found.</h1>';
     return;
   }
 
   const product = await getProductById(productId);
 
   if (!product) {
-    container.innerHTML = "<h1 class=\"error\">Product not found.</h1>";
+    container.innerHTML = '<h1 class="error">Product not found.</h1>';
     return;
   }
 
   titleEl.textContent = product.title;
-  imageEl.src = product.images && product.images.length > 1 ? product.images[0] : `https://ui-avatars.com/api/?name=${encodeURIComponent(product.title)}`;
+  const fallbackSrc = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+    product.title
+  )}`;
+  imageEl.src =
+    product.images && product.images.length > 0
+      ? product.images[0]
+      : fallbackSrc;
+  imageEl.onerror = () => {
+    imageEl.src = fallbackSrc;
+  };
   imageEl.alt = product.title;
   categoryEl.textContent = `Category: ${product.category.name}`;
   priceEl.textContent = `$${product.price}`;

@@ -1,8 +1,8 @@
-import { 
-  getProductById, 
-  getAllCategories, 
-  createProduct, 
-  updateProduct 
+import {
+  getProductById,
+  getAllCategories,
+  createProduct,
+  updateProduct,
 } from "../services/api.js";
 
 const form = document.getElementById("product-form");
@@ -16,10 +16,11 @@ const errorMsg = document.getElementById("error-message");
 
 let isEditMode = false;
 let editProductId = null;
+let existingImages = [];
 
 async function loadCategories() {
   const categories = await getAllCategories();
-  categories.forEach(category => {
+  categories.forEach((category) => {
     const option = document.createElement("option");
     option.value = category.id;
     option.textContent = category.name;
@@ -41,8 +42,9 @@ async function setupEditMode(id) {
       titleInput.value = product.title;
       descriptionInput.value = product.description;
       priceInput.value = product.price;
-      
-      await loadCategories(); 
+      existingImages = product.images || [];
+
+      await loadCategories();
       categoryInput.value = product.category.id;
     } else {
       errorMsg.textContent = "Product not found.";
@@ -55,16 +57,38 @@ async function setupEditMode(id) {
 function setupCreateMode() {
   isEditMode = false;
   loadCategories();
-  imageField.style.display = "none";
 }
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   errorMsg.textContent = "";
 
-  if (!titleInput.value.trim() || !descriptionInput.value.trim() || !priceInput.value.trim() || !categoryInput.value.trim()) {
+  if (
+    !titleInput.value.trim() ||
+    !descriptionInput.value.trim() ||
+    !priceInput.value.trim() ||
+    !categoryInput.value.trim()
+  ) {
     errorMsg.textContent = "All fields are required.";
     return;
+  }
+
+  let images;
+  if (isEditMode) {
+    images =
+      existingImages && existingImages.length > 0
+        ? existingImages
+        : [
+            `https://ui-avatars.com/api/?name=${encodeURIComponent(
+              titleInput.value
+            )}`,
+          ];
+  } else {
+    images = [
+      `https://ui-avatars.com/api/?name=${encodeURIComponent(
+        titleInput.value
+      )}`,
+    ];
   }
 
   const productData = {
@@ -72,7 +96,7 @@ form.addEventListener("submit", async (e) => {
     description: descriptionInput.value,
     price: parseFloat(priceInput.value),
     categoryId: parseInt(categoryInput.value),
-    images: [`https://ui-avatars.com/api/?name=${encodeURIComponent(titleInput.value)}`] 
+    images: images,
   };
 
   try {
@@ -84,9 +108,8 @@ form.addEventListener("submit", async (e) => {
       response = await createProduct(productData);
       alert("Product created successfully!");
     }
-    
-    window.location.href = './admin.html';
-    
+
+    window.location.href = "./admin.html";
   } catch (error) {
     errorMsg.textContent = "An error occurred. Please try again.";
   }
@@ -94,7 +117,7 @@ form.addEventListener("submit", async (e) => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const productId = urlParams.get('id');
+  const productId = urlParams.get("id");
 
   if (productId) {
     setupEditMode(productId);

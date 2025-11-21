@@ -50,11 +50,9 @@ A lightweight, full-featured E-Commerce application and Admin Dashboard built en
 
 ## ⚠️ Known Limitations (API Behavior)
 
-This project connects to a Fake API. Please be aware of the following behaviors which are limitations of the API service, not bugs in the code:
+This project relies on a third‑party fake API that can behave inconsistently. Any strange or unexpected behavior you see, most of the times it would be due to the API service and not a bug in this codebase.
 
-- **Data Persistence:** Created or updated products are not permanently saved on the server. The API returns a "Success" response, but if you refresh the page or reload the list, your new product will disappear. This is standard behavior for fake testing APIs.
-- **Price Filter:** The API's `price_min` and `price_max` endpoints are currently unstable, so the price filter feature has been disabled in the UI to ensure a smooth user experience.
-- **Pagination & Search:** Searching resets pagination to Page 1 to ensure consistency.
+If you encounter odd behavior, please assume it's an API limitation before investigating the app code.
 
 ## 📝 API Reference
 
